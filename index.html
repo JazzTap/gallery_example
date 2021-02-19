@@ -1,0 +1,39 @@
+<html>
+<head>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+  <h3>Demostylia</h3>
+  <div id="gallery" style="display: grid; grid-template-columns: 1fr 1fr;"></div>
+
+<script>
+  /* global d3 */
+  /// document.appendChild(new HTMLDivElement().setAttribute("id", "gallery"))
+
+  let desmostylia = [
+    {src: "https://upload.wikimedia.org/wikipedia/commons/8/80/Ashoroa.jpg", species: "Ashoroa laticosta", bones: "a rib, a humerus, a femur, and three vertebrae"},
+    {src: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Behemotops.jpg", species: "Behemotops" },
+    {src: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Paleoparadoxia_skeletal_diagram.jpg", species: "Paleoparadoxia"},
+    {src: "https://upload.wikimedia.org/wikipedia/commons/0/03/Desmostylus_skeletal_diagram.jpg", species: "Desmostylus"}
+  ]
+
+  let sel = d3.select("#gallery")
+     .selectAll("div")
+     .data(desmostylia)
+     .join("div")
+
+  sel.append("p").text((d) => d.species)  /* d.species ? d.species : "don't know" */
+  sel.append("img").attr("src", d => d.src).attr("title", d => d.species)
+    .style("max-width", "400px")
+
+  /* .selectAll("div")
+  .data(desmostylia)
+  .join("div")
+
+  sel.append("img").attr("src", d => d.src)
+  sel.append("p").text(d => d.species) */
+</script>
+
+</body>
+</html>
